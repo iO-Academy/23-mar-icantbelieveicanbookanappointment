@@ -3,7 +3,7 @@ const Header = () => {
 
   return (
     <>
-      <h1>I Can't Believe I Can Book An Appointment</h1>
+      <h1 className="header-text">I Can't Believe I Can Book An Appointment</h1>
     </>
   )
 }
