@@ -1,0 +1,9 @@
+@import '../components/header/_header';
+@import '../components/input/_input';
+@import '../pages/homepage/_homepage';
+@import '../pages/appointments/_appointments';
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}

@@ -1,0 +1,33 @@
+h1 {
+  background-color: aquamarine;
+}
+
+.input-container {
+  width: 75%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appointments-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appointments-container h2 {
+  width: 75%;
+  color: #144188;
+  font-weight: normal;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/*# sourceMappingURL=styles.css.map */
