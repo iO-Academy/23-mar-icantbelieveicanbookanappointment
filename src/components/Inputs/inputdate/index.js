@@ -8,7 +8,7 @@ const DateInput = ({inputLabel}) => {
         {inputLabel}
       </label>
       {/* if input is reason add spellcheck = true */}
-      <input type="text" className="input-box" spellCheck="false"/>
+      <input type="date" className="input-box" spellCheck="false"/>
     </div>
   )
 }

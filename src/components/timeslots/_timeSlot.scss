@@ -1,0 +1,15 @@
+.timeSlot-container {
+  width: 100%;
+  display: flex;
+
+
+  .timeSlot {
+    width: 10%;
+    border: 0.15rem solid #1a4486;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: #FFFFFF;
+    background: radial-gradient(ellipse 100% 100% at 0% 100%, #194893 50%, #4272c4 100%);
+  }
+}

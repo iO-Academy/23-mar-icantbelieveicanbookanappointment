@@ -1,9 +1,9 @@
 import '../_input.scss';
 
-const DropdownInput = ({inputLabel, dropArray}) => {
+const DropdownInput = ({inputLabel, dropArray, defaultInput}) => {
 
   const listItems = dropArray.map((option, index)  =>
-    <option key={index} value="doctor">{option}</option>
+    <option key={index} value={option.value}>{option.label}</option>
   )
 
   return (
@@ -13,7 +13,7 @@ const DropdownInput = ({inputLabel, dropArray}) => {
       </label>
       <select id="dropdown" defaultValue="null" className="input-box" required>
         <option key="-1" value="" hidden>
-          Choose a doctor...
+          {defaultInput}
         </option>
         {listItems}
       </select>
