@@ -1,14 +1,13 @@
 import '../_input.scss';
 
-const DateInput = ({inputLabel}) => {
+const DateInput = ({inputLabel, setInputValue}) => {
 
   return (
     <div className="input-container">
       <label>
         {inputLabel}
       </label>
-      {/* if input is reason add spellcheck = true */}
-      <input type="date" className="input-box" spellCheck="false"/>
+      <input type="date" className="input-box" onChange={(e) => setInputValue(e.target.value)}/>
     </div>
   )
 }

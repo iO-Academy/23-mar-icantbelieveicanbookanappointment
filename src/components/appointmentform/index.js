@@ -14,6 +14,10 @@ const AppointmentForm = () => {
   const dateLabel = "Date:"
 
   const [docArray, setDocArray] = useState([])
+  const [selectedDoctor, setSelectedDoctor] = useState("")
+  const [selectedDate, setSelectedDate] = useState("")
+  const [dropdownValue, setDropdownValue] = useState("")
+  const [dateValue, setDateValue] = useState("")
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -41,13 +45,17 @@ const AppointmentForm = () => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    console.log(selectedDoctor)
+  }, [selectedDoctor])
+
   return (
     <>
       <div className="appointments-form-container">
       <TextInput inputLabel={nameLabel} inputType={"text"} spellCheck={"false"} characterLimit={"255"}/>
       <TextInput inputLabel={emailLabel} inputType = {"email"} spellCheck={"false"} characterLimit={"255"}/>
       <TextInput inputLabel={reasonLabel} inputType = {"text"} spellCheck={"true"} characterLimit={"511"}/>
-      <DropdownInput inputLabel={doctorLabel} dropArray={docArray} defaultInput={"Please select..."}/>
+      <DropdownInput inputLabel={doctorLabel} dropArray={docArray} defaultInput={"Please select..."} setDropdownValue={setSelectedDoctor}/>
       <DateInput inputLabel={dateLabel}/>
       </div>
       <TimeSlots />
