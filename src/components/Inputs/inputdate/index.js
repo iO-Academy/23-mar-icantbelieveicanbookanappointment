@@ -1,6 +1,6 @@
-import './_input.scss';
+import '../_input.scss';
 
-const Input = ({inputLabel}) => {
+const DateInput = ({inputLabel}) => {
 
   return (
     <div className="input-container">
@@ -8,9 +8,9 @@ const Input = ({inputLabel}) => {
         {inputLabel}
       </label>
       {/* if input is reason add spellcheck = true */}
-      <input type="text" className="input-text" spellCheck="false"/>
+      <input type="text" className="input-box" spellCheck="false"/>
     </div>
   )
 }
 
-export default Input
+export default DateInput
