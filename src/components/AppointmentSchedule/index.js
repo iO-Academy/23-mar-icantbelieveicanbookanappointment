@@ -1,4 +1,5 @@
 import React from "react";
+import './_appointmentSchedule.scss'
 
 const AppointmentSchedule = ({ appointments }) => {
     if (appointments.length === 0) {
@@ -9,7 +10,7 @@ const AppointmentSchedule = ({ appointments }) => {
         <div className="appointment-schedule">
             {appointments.map((appointment, index) => (
                 <div key={index} className="appointment">
-                    <div className="time">{appointment.time}</div>
+                    <div className="time">{appointment.time}:00</div>
                     <div className="patient-id">{appointment.patientId}</div>
                 </div>
             ))}
