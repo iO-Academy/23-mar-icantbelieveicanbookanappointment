@@ -1,6 +1,6 @@
 import LoginForm from "../../components/LoginForm";
 
-const Login = (loggedIn, setLoggedIn) => {
+const Login = ({loggedIn, setLoggedIn}) => {
 
   return (
     <>
