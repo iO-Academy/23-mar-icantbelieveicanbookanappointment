@@ -1,8 +1,12 @@
+import DateInput from "../../components/Inputs/DateInput";
+import AppointmentSchedule from "../../components/AppointmentSchedule";
+
 const Admin = () => {
 
     return (
         <div >
-            <h1>Dr page</h1>
+            <DateInput />
+            <AppointmentSchedule />
         </div>
     )
 }

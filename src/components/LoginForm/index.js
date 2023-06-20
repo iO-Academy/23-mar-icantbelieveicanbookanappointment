@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { redirect } from "react-router-dom";
 import BASE_URL from "../../settings";
 
-const LoginForm = () => {
+const LoginForm = (loggedIn, setLoggedIn) => {
     const [submittedEmail, setSubmittedEmail] = useState('');
     const [submittedPassword, setSubmittedPassword] = useState('');
 
@@ -33,6 +33,7 @@ const LoginForm = () => {
                 // Handle the response
                 console.log(response)
                 if (response.ok) {
+                    setLoggedIn = true
                     // alert('logged in')
                     navigate('/admin')
                 }

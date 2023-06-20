@@ -1,6 +1,6 @@
 import TextInput from "../Inputs/textinput"
 import DropdownInput from "../Inputs/dropdowninput"
-import DateInput from "../Inputs/inputdate"
+import DateInput from "../Inputs/DateInput"
 import './_appointmentForm.scss'
 import {useEffect, useState} from "react";
 import TimeSlots from "../timeslots";
