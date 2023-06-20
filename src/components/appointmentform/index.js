@@ -7,17 +7,9 @@ import TimeSlots from "../timeslots";
 
 const AppointmentForm = () => {
 
-  const nameLabel = "Name:"
-  const emailLabel = "Email:"
-  const reasonLabel = "Reason:"
-  const doctorLabel = "Doctor:"
-  const dateLabel = "Date:"
-
   const [docArray, setDocArray] = useState([])
   const [selectedDoctor, setSelectedDoctor] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
-  const [dropdownValue, setDropdownValue] = useState("")
-  const [dateValue, setDateValue] = useState("")
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -49,16 +41,22 @@ const AppointmentForm = () => {
     console.log(selectedDoctor)
   }, [selectedDoctor])
 
+  useEffect(() => {
+    console.log(selectedDate)
+  }, [selectedDate])
+
   return (
     <>
       <div className="appointments-form-container">
-      <TextInput inputLabel={nameLabel} inputType={"text"} spellCheck={"false"} characterLimit={"255"}/>
-      <TextInput inputLabel={emailLabel} inputType = {"email"} spellCheck={"false"} characterLimit={"255"}/>
-      <TextInput inputLabel={reasonLabel} inputType = {"text"} spellCheck={"true"} characterLimit={"511"}/>
-      <DropdownInput inputLabel={doctorLabel} dropArray={docArray} defaultInput={"Please select..."} setDropdownValue={setSelectedDoctor}/>
-      <DateInput inputLabel={dateLabel}/>
+      <TextInput inputLabel={"First name:"} inputType={"text"} spellCheck={"false"} characterLimit={"255"}/>
+      <TextInput inputLabel={"Last name:"} inputType={"text"} spellCheck={"false"} characterLimit={"255"}/>
+      <TextInput inputLabel={"Email:"} inputType = {"email"} spellCheck={"false"} characterLimit={"255"}/>
+      <TextInput inputLabel={"Reason:"} inputType = {"text"} spellCheck={"true"} characterLimit={"511"}/>
+      <DropdownInput inputLabel={"Doctor:"} dropArray={docArray} defaultInput={"Please select..."} setDropdownValue={setSelectedDoctor}/>
+      <DateInput inputLabel={"Date:"} setSelectedDate={setSelectedDate}/>
       </div>
-      <TimeSlots />
+      <h3>Select from available appointments:</h3>
+      <TimeSlots selectedDoctor={selectedDoctor} selectedDate={selectedDate} error={error} setError={setError}/>
     </>
   )
 }
