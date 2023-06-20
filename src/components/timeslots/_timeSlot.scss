@@ -1,10 +1,17 @@
 .timeSlot-container {
   width: 60%;
+  margin-bottom: 8rem;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
 
+  &.hidden {
+    display: none;
+  }
 
   .timeSlot {
-    width: 10%;
+    width: 17%;
     border: 0.1rem solid #1a4486;
     border-radius: 0.5rem;
     padding: 0.5rem;

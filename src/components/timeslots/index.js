@@ -1,38 +1,41 @@
 import './_timeSlot.scss'
 import {useEffect, useState} from "react";
 
-const TimeSlot = ({selectedDoctor, selectedDate}) => {
-
-  const [existingAppointments, setExistingAppointments] = useState("")
-  const [error, setError] = useState(null); {/*check error here and app form*/}
-  const [availableAppointments, setAvailableAppointments] = useState([9, 10, 11, 12, 13, 14, 15, 16])
-
+const TimeSlot = ({ selectedDoctor, selectedDate }) => {
+  const [existingAppointments, setExistingAppointments] = useState([]);
+  const [error, setError] = useState(null);
+  const [availableAppointments, setAvailableAppointments] = useState([]);
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/appointments/' + selectedDate + '/' + selectedDoctor)
-        if (!response.ok) {
-          throw new Error("Failed to fetch appointments")
+      document.querySelector('.timeSlot-container').classList.add('hidden')
+      if (selectedDoctor && selectedDate) {
+        setAvailableAppointments([9, 10, 11, 12, 13, 14, 15, 16])
+        try {
+          const response = await fetch(
+            `http://localhost:3001/appointments/${selectedDate}/${selectedDoctor}`
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch appointments");
+          }
+          const data = await response.json();
+          setExistingAppointments(data.data);
+        } catch (error) {
+          setError(error.message);
         }
-        const data = await response.json()
-        setExistingAppointments(data.data)
-        const updatedAppTimes = [...availableAppointments];
-        existingAppointments.forEach((appointment) => {
-          updatedAppTimes.forEach((time, index) => {
-            if (time === appointment.time) {
-              updatedAppTimes.splice(index, 1);
-              console.log("Removed time: " + time);
-            }
-          });
-        });
-        setAvailableAppointments(updatedAppTimes);
-      } catch (error) {
-        setError(error.message)
       }
-    };
+    }
     fetchAppointments();
   }, [selectedDoctor, selectedDate]);
+
+  useEffect(() => {
+    const updatedAppTimes = availableAppointments.filter(
+      (time) => !existingAppointments.some((appointment) => appointment.time === time)
+    );
+    setAvailableAppointments(updatedAppTimes);
+    window.setTimeout(() =>
+    {document.querySelector('.timeSlot-container').classList.remove('hidden')}, 300)
+  }, [existingAppointments]);
 
   let displayTimes = null;
   if (selectedDoctor && selectedDate) {
@@ -44,10 +47,10 @@ const TimeSlot = ({selectedDoctor, selectedDate}) => {
   }
 
   return (
-    <div className="timeSlot-container">
+    <div className="timeSlot-container hidden">
       {displayTimes}
     </div>
-  )
-}
+  );
+};
 
-export default TimeSlot
+export default TimeSlot;
