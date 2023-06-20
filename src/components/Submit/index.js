@@ -1,9 +1,9 @@
-
+import './_submit.scss';
 const Submit = () => {
 
         return (
             <>
-                <input type="submit">
+                <input className="submit-button" type="submit">
 
                 </input>
             </>
