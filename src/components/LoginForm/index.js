@@ -2,7 +2,9 @@ import TextInput from "../Inputs/textinput";
 import './_loginForm.scss';
 import Submit from "../Submit";
 import { useEffect, useState } from "react";
+
 import { redirect } from "react-router-dom";
+import BASE_URL from "../../settings";
 
 const LoginForm = () => {
     const [submittedEmail, setSubmittedEmail] = useState('');
@@ -15,7 +17,7 @@ const LoginForm = () => {
             password: submittedPassword
         };
 
-        fetch('http://localhost:3001/login', {
+        fetch(BASE_URL + 'login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
