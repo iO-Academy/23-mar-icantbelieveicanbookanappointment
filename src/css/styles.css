@@ -1,25 +1,73 @@
-h1 {
-  background-color: aquamarine;
+.header-text {
+  margin: 0 auto;
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: center;
+  background: linear-gradient(to right, #194893 0%, #4272c4 100%);
+  color: #FFFFFF;
+  font-weight: normal;
 }
 
 .input-container {
-  width: 75%;
+  width: 100%;
   display: grid;
   grid-template-columns: 30% 70%;
 }
+.input-container label {
+  padding: 0.7rem;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  background: #797f88;
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+  background: linear-gradient(to right, #194893 0%, #4272c4 100%);
+}
+.input-container .input-box {
+  padding-left: 0.5rem;
+  border: solid #6b7077;
+  border-width: 0.1rem 0.1rem 0.1rem 0;
+  border-radius: 0rem 0.5rem 0.5rem 0;
+  font-size: 0.8rem;
+  color: #194893;
+  text-decoration: none;
+}
 
 .homepage-content {
+  padding-top: 4rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 4rem;
 }
+.homepage-content h2 {
+  width: 75%;
+  color: #144188;
+  font-weight: normal;
+  text-align: center;
+}
+.homepage-content .booking-link, .homepage-content .login-link {
+  width: 50%;
+  border: 0.15rem solid #1a4486;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: #FFFFFF;
+  background: radial-gradient(ellipse 100% 100% at 0% 100%, #194893 50%, #4272c4 100%);
+}
+.homepage-content a, .homepage-content a:link, .homepage-content a:active, .homepage-content a:hover, .homepage-content a:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
 .appointments-container {
+  padding-top: 4rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 4rem;
 }
 .appointments-container h2 {
   width: 75%;
+  margin: 0 auto;
   color: #144188;
   font-weight: normal;
   text-align: center;
