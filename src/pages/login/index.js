@@ -4,7 +4,7 @@ const Login = () => {
 
   return (
     <>
-        <h1>Doctor Login Form:</h1>
+        <h1>Doctor Login Form</h1>
      <LoginForm />
     </>
   )
