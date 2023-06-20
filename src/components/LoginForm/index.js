@@ -15,7 +15,7 @@ const LoginForm = () => {
             password: submittedPassword
         };
 
-        fetch('https://localhost:3001/login', {
+        fetch('http://localhost:3001/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,13 +27,14 @@ const LoginForm = () => {
         })
             .then(response => {
                 // Handle the response
+                console.log(response)
                 if (response.ok) {
-                    redirect('/appointments')
+                    alert('logged in')
                 }
             })
             .catch(error => {
                 // Handle the error
-                alert('wrong credentials')
+                alert('Wrong credentials', error)
             });
     };
 
@@ -41,7 +42,7 @@ const LoginForm = () => {
         <form className="login-form-container" onSubmit={logInHandleSubmit}>
             <TextInput
                 value={submittedEmail}
-                onChange={(e) => setSubmittedEmail(e.target.value)}
+                setInputValue={setSubmittedEmail}
                 inputLabel="Email:"
                 inputType="email"
                 spellCheck={false}
@@ -49,7 +50,7 @@ const LoginForm = () => {
             />
             <TextInput
                 value={submittedPassword}
-                onChange={(e) => setSubmittedPassword(e.target.value)}
+                setInputValue={setSubmittedPassword}
                 inputLabel="Password:"
                 inputType="password"
                 spellCheck={false}
