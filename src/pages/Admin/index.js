@@ -21,10 +21,11 @@ const Admin = () => {
                     }
                 })
                 .then(data => {
-                    setAppointments(data);
+                    console.log(data)
+                    setAppointments(data.data);
                 })
                 .catch(error => {
-                    console.error(error);
+                    console.error(error)
                 });
         }
     }, [selectedDate]);
