@@ -6,9 +6,12 @@ const AppointmentSchedule = ({ appointments }) => {
         return <div>No appointments available.</div>;
     }
 
+    // Sort appointments array based on time in ascending order
+    const sortedAppointments = appointments.sort((a, b) => a.time - b.time);
+
     return (
         <div className="appointment-schedule">
-            {appointments.map((appointment, index) => (
+            {sortedAppointments.map((appointment, index) => (
                 <div key={index} className="appointment">
                     <div className="time">{appointment.time}:00</div>
                     <div className="patient-id">{appointment.patientId}</div>
