@@ -29,9 +29,6 @@ const AppointmentSchedule = ({ appointments }) => {
         fetchPatientNames()
     }, [appointments])
 
-    if (appointments.length === 0) {
-        return <div>No appointments available.</div>
-    }
 
     const appointmentTimes = [9, 10, 11, 12, 13, 14, 15, 16]
     const sortedAppointments = appointments.sort((a, b) => a.time - b.time)
