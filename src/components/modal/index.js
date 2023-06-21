@@ -7,7 +7,7 @@ const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) =>
     const { time, reason } = data;
     const [showRecordsModal, setShowRecordsModal] = useState(false);
     const [showNotesForm, setShowNotesForm] = useState(false);
-
+    const appointmentId = data.id
     const openRecordsModal = () => {
         setShowRecordsModal(true);
     };
@@ -61,7 +61,7 @@ const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) =>
                 <div className="modal-overlay">
                     <div className="modal-content notes-form-modal">
                         <NotesForm
-                            appointments={appointments}
+                            appointmentId={appointmentId}
                             patientName={patientName}
                             closeNotesForm={closeNotesForm}
                         />

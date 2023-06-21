@@ -3,10 +3,10 @@ import "./_notesForm.scss";
 import TextInput from "../Inputs/textinput";
 import BASE_URL from "../../settings";
 
-const NotesForm = ({ appointments, patientName, closeNotesForm }) => {
+const NotesForm = ({ appointmentId, patientName, closeNotesForm }) => {
     const [notes, setNotes] = useState("");
     const [prescriptions, setPrescriptions] = useState("");
-    const {appointmentId} = appointments
+
     const handleSubmit = (e) => {
         e.preventDefault();
         let form = {
@@ -34,9 +34,7 @@ const NotesForm = ({ appointments, patientName, closeNotesForm }) => {
                 console.log(response)
                 if (response.ok) {
                     console.log("record submitted")
-                    // setLoggedIn(true)
-                    // alert('logged in')
-                    // navigate('/admin')
+                    closeNotesForm()
                 }
             })
             .catch(error => {
