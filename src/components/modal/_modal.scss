@@ -36,7 +36,11 @@
   color: #333;
 }
 
-.modal-buttons {
+.modal-buttons-container {
   display: flex;
   justify-content: space-around;
+}
+
+.modal-button {
+  font-size: 1.1rem;
 }

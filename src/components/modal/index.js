@@ -17,10 +17,10 @@ const Modal = ({ data, patientName, selectedDate, closeModal }) => {
                     <p>Date: {selectedDate}</p>
                     <p>Reason for appointment: {reason}</p>
                 </div>
-                <div className="modal-buttons">
+                <div className="modal-buttons-container">
 
-                    <button>SEE RECORDS</button>
-                    <button>ADD NOTES</button>
+                    <button className="modal-button">SEE RECORDS</button>
+                    <button className="modal-button">ADD NOTES</button>
                 </div>
             </div>
         </div>
