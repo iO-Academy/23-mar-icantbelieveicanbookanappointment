@@ -56,7 +56,7 @@ const AppointmentSchedule = ({ appointments }) => {
                         className="appointment"
                         onClick={() => {
                             setSelectedAppointment(appointment);
-                            setModalOpen(true);
+                            appointment ? setModalOpen(true): setModalOpen(false)
                         }}
                     >
                         <div className="time">{time}:00</div>
