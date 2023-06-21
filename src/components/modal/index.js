@@ -1,7 +1,7 @@
 import React from "react";
 import "./_modal.scss";
 
-const Modal = ({ data, patientName, selectedDate, loading, error, closeModal }) => {
+const Modal = ({ data, patientName, selectedDate, closeModal }) => {
     const { time, reason } = data
 
     return (

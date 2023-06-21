@@ -66,8 +66,6 @@ const AppointmentSchedule = ({ appointments, selectedDate }) => {
             {modalOpen && (
                 <Modal
                     data={selectedAppointment}
-                    loading={false}
-                    error={null}
                     closeModal={closeModal}
                     patientName={patientNames[selectedAppointment.patientId]}
                     selectedDate={selectedDate}
