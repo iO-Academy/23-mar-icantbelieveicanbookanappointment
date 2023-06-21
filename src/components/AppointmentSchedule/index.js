@@ -1,5 +1,4 @@
 import BASE_URL from "../../settings"
-
 import React, { useEffect, useState } from "react"
 import './_appointmentSchedule.scss'
 
@@ -34,22 +33,25 @@ const AppointmentSchedule = ({ appointments }) => {
         return <div>No appointments available.</div>
     }
 
+    const appointmentTimes = [9, 10, 11, 12, 13, 14, 15, 16]
     const sortedAppointments = appointments.sort((a, b) => a.time - b.time)
 
     return (
         <div className="appointment-schedule">
-            {sortedAppointments.map((appointment, index) => (
-                <div key={index} className="appointment">
-                    <div className="time">{appointment.time}:00</div>
-                    <div className="patient-name">
-                        {patientNames[appointment.patientId] || "Loading..."}
+            {appointmentTimes.map(time => {
+                const appointment = sortedAppointments.find(app => app.time === time)
+
+                return (
+                    <div key={time} className="appointment">
+                        <div className="time">{time}:00</div>
+                        <div className="patient-name">
+                            {appointment ? patientNames[appointment.patientId] || "Loading..." : ""}
+                        </div>
                     </div>
-                </div>
-            ))}
+                )
+            })}
         </div>
     )
 }
 
 export default AppointmentSchedule
-
-
