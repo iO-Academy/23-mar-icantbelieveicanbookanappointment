@@ -4,14 +4,15 @@ import './_admin.scss'
 import { useEffect, useState } from "react";
 import BASE_URL from "../../settings";
 
-const Admin = () => {
+const Admin = ({ doctorId }) => {
     const [selectedDate, setSelectedDate] = useState("");
     const [appointments, setAppointments] = useState([]);
+
 
     useEffect(() => {
         if (selectedDate) {
 
-            fetch(`${BASE_URL}appointments/${selectedDate}/2`)
+            fetch(`${BASE_URL}appointments/${selectedDate}/${doctorId}`)
                 .then(response => {
                     if (response.ok) {
                         console.log("fetched appointments")

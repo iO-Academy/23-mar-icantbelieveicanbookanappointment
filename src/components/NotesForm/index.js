@@ -1,17 +1,50 @@
 import React, { useState } from "react";
 import "./_notesForm.scss";
 import TextInput from "../Inputs/textinput";
+import BASE_URL from "../../settings";
 
-const NotesForm = ({ patientName, closeNotesForm }) => {
+const NotesForm = ({ appointments, patientName, closeNotesForm }) => {
     const [notes, setNotes] = useState("");
     const [prescriptions, setPrescriptions] = useState("");
-
+    const {appointmentId} = appointments
     const handleSubmit = (e) => {
         e.preventDefault();
+        let form = {
+            appointmentId: appointmentId,
+            notes: notes,
+            prescriptions: prescriptions
+        };
 
         // POST REQUEST TO ADD THE NOTES TO DATABASE
         // IN THE BODY INCLUDES THE 'notes' AND 'prescriptions'
+
+        fetch(BASE_URL + 'record', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                appointmentId: form.appointmentId,
+                notes: form.notes,
+                prescriptions: form.prescriptions,
+            }),
+        })
+            .then(response => {
+                // Handle the response
+                console.log(response)
+                if (response.ok) {
+                    console.log("record submitted")
+                    // setLoggedIn(true)
+                    // alert('logged in')
+                    // navigate('/admin')
+                }
+            })
+            .catch(error => {
+                // Handle the error
+                alert('Did not submit', error)
+            });
     };
+
 
     return (
         <div className="modal-content">

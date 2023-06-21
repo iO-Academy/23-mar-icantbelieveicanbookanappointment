@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
-
+    const [doctorId, setDoctorId] = useState(1)
     return (
         <>
             <Header />
@@ -19,13 +19,17 @@ function App() {
                     <Route path="/appointments" element={<Appointments />} />
                     <Route
                         path="/login"
-                        element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+                        element={<Login loggedIn={loggedIn}
+                                        setDoctorId={setDoctorId} setLoggedIn={setLoggedIn} />}
                     />
                     <Route
                         path="/admin"
                         element={
                             loggedIn ? (
-                                <Admin loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                                <Admin
+                                       loggedIn={loggedIn}
+                                       doctorId={doctorId}
+                                       setLoggedIn={setLoggedIn} />
                             ) : (
                                 <Navigate to="/" replace />
                             )

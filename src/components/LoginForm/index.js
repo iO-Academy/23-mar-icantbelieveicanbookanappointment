@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import BASE_URL from "../../settings";
 
-const LoginForm = ({loggedIn, setLoggedIn}) => {
+const LoginForm = ({ setLoggedIn, setDoctorId }) => {
     const [submittedEmail, setSubmittedEmail] = useState('');
     const [submittedPassword, setSubmittedPassword] = useState('');
 
@@ -28,19 +28,22 @@ const LoginForm = ({loggedIn, setLoggedIn}) => {
                 password: form.password,
             }),
         })
-            .then(response => {
+            .then((response) => {
                 // Handle the response
                 console.log(response)
                 if (response.ok) {
                     setLoggedIn(true)
                     // alert('logged in')
                     navigate('/admin')
+                    return response.json()
                 }
-            })
-            .catch(error => {
+            }).catch(error => {
                 // Handle the error
                 alert('Wrong credentials', error)
-            });
+            }).then(data => {
+                console.log(data.doctorId)
+                setDoctorId(data.doctorId)
+        })
     };
 
     return (

@@ -3,7 +3,7 @@ import "./_modal.scss";
 import RecordsModal from "../RecordsModal";
 import NotesForm from "../NotesForm";
 
-const Modal = ({ data, patientName, selectedDate, closeModal }) => {
+const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) => {
     const { time, reason } = data;
     const [showRecordsModal, setShowRecordsModal] = useState(false);
     const [showNotesForm, setShowNotesForm] = useState(false);
@@ -61,6 +61,7 @@ const Modal = ({ data, patientName, selectedDate, closeModal }) => {
                 <div className="modal-overlay">
                     <div className="modal-content notes-form-modal">
                         <NotesForm
+                            appointments={appointments}
                             patientName={patientName}
                             closeNotesForm={closeNotesForm}
                         />

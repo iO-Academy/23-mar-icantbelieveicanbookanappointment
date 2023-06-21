@@ -19,10 +19,11 @@ const AppointmentSchedule = ({ appointments, selectedDate }) => {
             const promises = appointments.map(appointment =>
                 fetch(`${BASE_URL}patient/${appointment.patientId}`)
                     .then(response => response.json())
-                    .then(data => ({
-                        id: appointment.patientId,
+                    .then((data) => {
+                        console.log(data)
+                return { id: appointment.patientId,
                         name: `${data.data.first_name} ${data.data.last_name}`
-                    }))
+                    }})
             )
 
             const resolvedPatientNames = await Promise.all(promises)
@@ -69,6 +70,7 @@ const AppointmentSchedule = ({ appointments, selectedDate }) => {
                     closeModal={closeModal}
                     patientName={patientNames[selectedAppointment.patientId]}
                     selectedDate={selectedDate}
+                    appointments={appointments}
                 />
             )}
         </div>
