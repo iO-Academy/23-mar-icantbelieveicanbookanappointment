@@ -60,7 +60,7 @@ const AppointmentSchedule = ({ appointments }) => {
                         }}
                     >
                         <div className="time">{time}:00</div>
-                        <div className="patient-name">
+                        <div className={`patient-name ${appointment ? "patient-hover": ""}`}>
                             {appointment ? patientNames[appointment.patientId] || "Loading..." : ""}
                         </div>
                     </div>
