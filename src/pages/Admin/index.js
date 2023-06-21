@@ -33,7 +33,7 @@ const Admin = () => {
     return (
         <div className="container">
             <DateInput inputLabel={"Date:"} setSelectedDate={setSelectedDate} />
-            <AppointmentSchedule appointments={appointments} />
+            <AppointmentSchedule selectedDate={selectedDate} appointments={appointments} />
         </div>
     );
 }

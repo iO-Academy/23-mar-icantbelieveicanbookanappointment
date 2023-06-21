@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import './_appointmentSchedule.scss'
 import Modal from "../modal";
 
-const AppointmentSchedule = ({ appointments }) => {
+const AppointmentSchedule = ({ appointments, selectedDate }) => {
     const [patientNames, setPatientNames] = useState({})
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -69,6 +69,8 @@ const AppointmentSchedule = ({ appointments }) => {
                     loading={false}
                     error={null}
                     closeModal={closeModal}
+                    patientName={patientNames[selectedAppointment.patientId]}
+                    selectedDate={selectedDate}
                 />
             )}
         </div>

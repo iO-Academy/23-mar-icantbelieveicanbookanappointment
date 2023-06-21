@@ -1,19 +1,21 @@
 import React from "react";
 import "./_modal.scss";
 
-const Modal = ({ data, loading, error, closeModal }) => {
+const Modal = ({ data, patientName, selectedDate, loading, error, closeModal }) => {
+    const { time, date, reason } = data
+
     return (
         <div className="modal-overlay">
             <div className="modal-content">
                     <button className="modal-close-button" onClick={closeModal}>Close</button>
                 <div className="modal-header">
-                    <h1 className="modal-title">Patient Name</h1>
+                    <h1 className="modal-title">{patientName}</h1>
 
                 </div>
                 <div className="modal-body">
-                    <p>Time: Time</p>
-                    <p>Date: Date</p>
-                    <p>Reason for appointment: Reason</p>
+                    <p>Time: {time}:00</p>
+                    <p>Date: {selectedDate}</p>
+                    <p>Reason for appointment: {reason}</p>
                 </div>
                 <div className="modal-buttons">
 
