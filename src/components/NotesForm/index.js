@@ -1,13 +1,17 @@
-import React, { useState } from "react"
-// import "./NotesForm.scss"
+import React, { useState } from "react";
+import "./_notesForm.scss";
+import TextInput from "../Inputs/textinput";
 
 const NotesForm = ({ patientName, closeNotesForm }) => {
-    const [notes, setNotes] = useState("")
-    const [prescriptions, setPrescriptions] = useState("")
+    const [notes, setNotes] = useState("");
+    const [prescriptions, setPrescriptions] = useState("");
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+        e.preventDefault();
+
+        // POST REQUEST TO ADD THE NOTES TO DATABASE
+        // IN THE BODY INCLUDES THE 'notes' AND 'prescriptions'
+    };
 
     return (
         <div className="modal-content">
@@ -20,29 +24,30 @@ const NotesForm = ({ patientName, closeNotesForm }) => {
             <div className="modal-body">
                 <form onSubmit={handleSubmit}>
                     <div className="form-field">
-                        <label htmlFor="notes">Notes</label>
-                        <textarea
-                            id="notes"
-                            name="notes"
-                            value={notes}
-                            onChange={(e) => setNotes(e.target.value)}
-                        ></textarea>
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="prescriptions">Prescriptions</label>
-                        <input
-                            type="text"
-                            id="prescriptions"
-                            name="prescriptions"
-                            value={prescriptions}
-                            onChange={(e) => setPrescriptions(e.target.value)}
+                        <TextInput
+                            inputType="textarea"
+                            inputLabel="Notes"
+                            spellCheck={false}
+                            characterLimit={500}
+                            setInputValue={setNotes}
                         />
                     </div>
-                    <button type="submit">Save</button>
+                    <div className="form-field">
+                        <TextInput
+                            inputType="text"
+                            inputLabel="Prescriptions"
+                            spellCheck={false}
+                            characterLimit={200}
+                            setInputValue={setPrescriptions}
+                        />
+                    </div>
+                    <div className="submit-button-container">
+                    <button type="submit" className="submit-button">Save</button>
+                    </div>
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default NotesForm
+export default NotesForm;
