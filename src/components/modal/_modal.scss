@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .modal-title {
@@ -29,9 +29,14 @@
 }
 
 .modal-close-button {
-  background: none;
-  border: none;
+  background: red;
+  border: 2px solid black;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
   color: #333;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: space-around;
 }

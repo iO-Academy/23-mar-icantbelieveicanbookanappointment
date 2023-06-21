@@ -10,7 +10,8 @@ const Modal = ({ data, loading, error, closeModal }) => {
                     <button className="modal-close-button" onClick={closeModal}>Close</button>
                 </div>
                 <div className="modal-body">
-                     {/*Content of the modal */}
+                    <button>SEE RECORDS</button>
+                    <button>ADD NOTES</button>
                 </div>
             </div>
         </div>
