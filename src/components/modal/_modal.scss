@@ -37,10 +37,15 @@
 }
 
 .modal-buttons-container {
+  margin-top: 2.5rem;
   display: flex;
   justify-content: space-around;
 }
 
 .modal-button {
   font-size: 1.1rem;
+}
+
+.modal-button:hover{
+  cursor: pointer;
 }
