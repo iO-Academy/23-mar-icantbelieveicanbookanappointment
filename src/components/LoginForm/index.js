@@ -1,4 +1,4 @@
-import TextInput from "../Inputs/textinput";
+import TextInput from "../Inputs/TextInput";
 import './_loginForm.scss';
 import Submit from "../Submit";
 import { useEffect, useState } from "react";

@@ -1,9 +1,9 @@
 
-const Submit = () => {
+const Submit = ({handleSubmit}) => {
 
         return (
             <>
-                <input type="submit">
+                <input type="submit" >
 
                 </input>
             </>
