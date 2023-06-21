@@ -9,7 +9,7 @@ const Homepage = () => {
       <Link to={"/appointments"}>Book an appointment</Link>
     </div>
     <div className="login-link">
-      <Link to={"/appointments"}>Doctor Login</Link>
+      <Link to={"/login"}>Doctor Login</Link>
     </div>
   </div>
   )

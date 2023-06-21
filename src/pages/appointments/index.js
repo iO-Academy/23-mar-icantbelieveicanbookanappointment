@@ -1,14 +1,14 @@
-import Input from "../../components/Input"
 import './_appointments.scss'
+import AppointmentForm from "../../components/appointmentform";
+import TimeSlot from "../../components/timeslots";
+
 
 const Appointments = () => {
-
-  const label = "Name:"
 
   return (
     <div className="appointments-container">
       <h2>Book an appointment:</h2>
-      <Input inputLabel={label}/>
+      <AppointmentForm />
     </div>
   )
 }

@@ -1,24 +1,24 @@
 .input-container {
-  width: 75%;
+  width: 100%;
   display: grid;
   grid-template-columns: 30% 70%;
 
   label {
     padding: 0.7rem;
-    text-align: center;
+    text-align: right;
     color: #FFFFFF;
-    font-size: 1rem;
+    font-size: 0.8rem;
     background: #797f88;
     border-radius: 0.5rem 0rem 0rem 0.5rem;
     background: linear-gradient(to right, #194893 0%, #4272c4 100%);
   }
 
-  .input-text {
+  .input-box {
     padding-left: 0.5rem;
     border: solid #6b7077;
     border-width: 0.1rem 0.1rem 0.1rem 0;
     border-radius: 0rem 0.5rem 0.5rem 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #194893;
     text-decoration: none;
   }
