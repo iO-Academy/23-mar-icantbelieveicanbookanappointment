@@ -5,13 +5,14 @@ const Modal = ({ data, loading, error, closeModal }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
+                    <button className="modal-close-button" onClick={closeModal}>Close</button>
                 <div className="modal-header">
                     <h1 className="modal-title">Patient Name</h1>
-                    <button className="modal-close-button" onClick={closeModal}>Close</button>
 
                 </div>
                 <div className="modal-body">
-                    <p>Time: Date:</p>
+                    <p>Time: Time</p>
+                    <p>Date: Date</p>
                     <p>Reason for appointment: Reason</p>
                 </div>
                 <div className="modal-buttons">
