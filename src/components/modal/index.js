@@ -2,7 +2,7 @@ import React from "react";
 import "./_modal.scss";
 
 const Modal = ({ data, patientName, selectedDate, loading, error, closeModal }) => {
-    const { time, date, reason } = data
+    const { time, reason } = data
 
     return (
         <div className="modal-overlay">
