@@ -2,6 +2,9 @@ import React from "react"
 // import "./RecordsModal.scss"
 
 const RecordsModal = ({ patientName, closeRecordsModal }) => {
+
+    // USE EFFECT TO PERFORM A GET REQUEST TO GET THE RECORDS
+
     return (
         <div className="modal-content">
             <button className="modal-close-button" onClick={closeRecordsModal}>
