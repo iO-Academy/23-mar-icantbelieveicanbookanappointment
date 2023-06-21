@@ -1,10 +1,10 @@
-import BASE_URL from "../../settings";
+import BASE_URL from "../../settings"
 
-import React, { useEffect, useState } from "react";
-import './_appointmentSchedule.scss';
+import React, { useEffect, useState } from "react"
+import './_appointmentSchedule.scss'
 
 const AppointmentSchedule = ({ appointments }) => {
-    const [patientNames, setPatientNames] = useState({});
+    const [patientNames, setPatientNames] = useState({})
 
     useEffect(() => {
         const fetchPatientNames = async () => {
@@ -15,26 +15,26 @@ const AppointmentSchedule = ({ appointments }) => {
                         id: appointment.patientId,
                         name: `${data.data.first_name} ${data.data.last_name}`
                     }))
-            );
+            )
 
-            const resolvedPatientNames = await Promise.all(promises);
+            const resolvedPatientNames = await Promise.all(promises)
 
             const patientNameMap = resolvedPatientNames.reduce(
                 (map, patient) => ({ ...map, [patient.id]: patient.name }),
                 {}
-            );
+            )
 
-            setPatientNames(patientNameMap);
-        };
+            setPatientNames(patientNameMap)
+        }
 
-        fetchPatientNames();
-    }, [appointments]);
+        fetchPatientNames()
+    }, [appointments])
 
     if (appointments.length === 0) {
-        return <div>No appointments available.</div>;
+        return <div>No appointments available.</div>
     }
 
-    const sortedAppointments = appointments.sort((a, b) => a.time - b.time);
+    const sortedAppointments = appointments.sort((a, b) => a.time - b.time)
 
     return (
         <div className="appointment-schedule">
@@ -47,9 +47,9 @@ const AppointmentSchedule = ({ appointments }) => {
                 </div>
             ))}
         </div>
-    );
-};
+    )
+}
 
-export default AppointmentSchedule;
+export default AppointmentSchedule
 
 
