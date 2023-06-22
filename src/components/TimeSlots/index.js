@@ -13,7 +13,7 @@ const TimeSlot = ({selectedDoctor, selectedDate}) => {
       try {
         const response = await fetch('http://localhost:3001/appointments/' + selectedDate + '/' + selectedDoctor)
         if (!response.ok) {
-          throw new Error("Failed to fetch appointments")
+          throw new Error("Failed to fetch Appointments")
         }
         const data = await response.json()
         setExistingAppointments(data.data)

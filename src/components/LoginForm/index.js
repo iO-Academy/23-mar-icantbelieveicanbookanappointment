@@ -1,15 +1,15 @@
-import TextInput from "../Inputs/textinput";
+import TextInput from "../Inputs/TextInput";
 import './_loginForm.scss';
 import Submit from "../Submit";
-import { useEffect, useState } from "react";
-
-import { redirect } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
+import { useState } from "react";
 import BASE_URL from "../../settings";
 
-const LoginForm = () => {
+const LoginForm = ({ setLoggedIn, setDoctorId }) => {
     const [submittedEmail, setSubmittedEmail] = useState('');
     const [submittedPassword, setSubmittedPassword] = useState('');
 
+    const navigate = useNavigate();
     const logInHandleSubmit = (e) => {
         e.preventDefault();
         let form = {
@@ -27,17 +27,17 @@ const LoginForm = () => {
                 password: form.password,
             }),
         })
-            .then(response => {
-                // Handle the response
-                console.log(response)
+            .then((response) => {
                 if (response.ok) {
-                    alert('logged in')
+                    setLoggedIn(true)
+                    navigate('/admin')
+                    return response.json()
                 }
-            })
-            .catch(error => {
-                // Handle the error
+            }).catch(error => {
                 alert('Wrong credentials', error)
-            });
+            }).then(data => {
+                setDoctorId(data.doctorId)
+        })
     };
 
     return (
