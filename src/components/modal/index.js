@@ -8,6 +8,9 @@ const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) =>
     const [showRecordsModal, setShowRecordsModal] = useState(false);
     const [showNotesForm, setShowNotesForm] = useState(false);
     const appointmentId = data.id
+    const patientId = data.patientId
+
+
     const openRecordsModal = () => {
         setShowRecordsModal(true);
     };
@@ -52,6 +55,7 @@ const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) =>
                     <div className="modal-content records-modal">
                         <RecordsModal
                             patientName={patientName}
+                            patientId ={patientId}
                             closeRecordsModal={closeRecordsModal}
                         />
                     </div>
