@@ -1,9 +1,9 @@
 import './_submit.scss';
-const Submit = () => {
+const Submit = ({handleSubmit}) => {
 
         return (
             <>
-                <input className="submit-button" type="submit">
+                <input className="submit-button" type="submit" onClick={handleSubmit}>
 
                 </input>
             </>

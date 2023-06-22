@@ -26,8 +26,6 @@ const AppointmentForm = () => {
 
     const navigate = useNavigate()
     const [modalOpen, setModalOpen] = useState(false)
-    // const [selectedAppointment, setSelectedAppointment] = useState(null)
-
 
 
     const setInputEmail = (email) => {
@@ -85,6 +83,7 @@ const AppointmentForm = () => {
     }, [])
 
     useEffect(() => {
+        console.log(selectedDoctor)
     }, [selectedDoctor])
 
     useEffect(() => {
@@ -94,18 +93,24 @@ const AppointmentForm = () => {
     const handleAppointmentSubmit = async (e) => {
         e.preventDefault()
         if (patientId < 1) {
-            alert('Email not recognised. Please try again.', error)
+            alert('Email not recognised. Please try again.', error);
+        } else if (!inputFirstName || !inputLastName) {
+            alert('Please enter a first name and last name.');
         } else {
+            const selectedDoctorObj = docArray.find(
+              (doctor) => doctor.value === selectedDoctor
+            );
             const newAppointmentData = {
                 firstName: inputFirstName,
                 lastName: inputLastName,
                 email: setInputEmail,
-                patientId: patientId,
+                doctorName: selectedDoctorObj ? selectedDoctorObj.label : "",                patientId: patientId,
                 doctorId: selectedDoctor,
                 time: selectedTimeSlot,
                 date: selectedDate,
                 reason: inputReason
             }
+
             const addAppointment = async () => {
 
             }
@@ -145,13 +150,12 @@ const AppointmentForm = () => {
 
     const handleModalClose = () => {
         setModalOpen(false)
-        // setSelectedAppointment(null)
         navigate('/')
     };
 
     return (
-        <>
-            <div className="appointments-form-container">
+        <div className="appointments-form-container">
+            <div className="appointments-form-inputs">
                 <TextInput
                     inputLabel={"First name:"}
                     inputType={"text"}
@@ -190,7 +194,9 @@ const AppointmentForm = () => {
                     inputLabel={"Date:"}
                     setSelectedDate={setSelectedDate} />
             </div>
-            <h3>Select from available appointments:</h3>
+            <h3 className="select-appointment-text">
+                Select from available appointments:
+            </h3>
             <TimeSlots
                 selectedDoctor={selectedDoctor}
                 selectedDate={selectedDate}
@@ -203,11 +209,11 @@ const AppointmentForm = () => {
             {modalOpen && (
                 <SuccessModal
                     newAppointmentData={newAppointmentData}
-                    onClose={() => setNewAppointmentData(null)}
+                  onClose={handleModalClose}
                 />
             )}
 
-        </>
+        </div>
     )
 }
 export default AppointmentForm

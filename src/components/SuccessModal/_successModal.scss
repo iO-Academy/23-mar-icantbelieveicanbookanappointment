@@ -1,0 +1,45 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally and vertically */
+
+  .modal-content {
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    color: #144188;
+    text-align: center;
+  }
+
+  .button-container {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+
+    .modal-close-button {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.5rem;
+      width: 1.2rem;
+      border: 0.15rem solid #1a4486;
+      border-radius: 0.2rem;
+      padding: 0.2rem;
+      text-align: center;
+      color: #FFFFFF;
+      background: radial-gradient(ellipse 100% 100% at 0% 100%, #194893 50%, #4272c4 100%);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .modal-text {
+    margin-bottom: 2rem;
+  }
+}

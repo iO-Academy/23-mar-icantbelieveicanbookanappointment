@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-// import '_modal.scss'
+import './_successModal.scss'
 
 const SuccessModal = ({ newAppointmentData, onClose }) => {
 
@@ -8,19 +8,20 @@ const SuccessModal = ({ newAppointmentData, onClose }) => {
     }
 
     return (
+      <div className="modal-overlay">
         <div className="modal-content">
-            <button className="modal-close-button" onClick={onClose}>
-                Close
-            </button>
-            <p>
-                {newAppointmentData.firstName}
-                {newAppointmentData.lastName}
-                you have successfully booked an appointment at
-                {newAppointmentData.time}
-                on
-                {newAppointmentData.date}.
+            <div className="button-container">
+                <button className="modal-close-button" onClick={onClose}>
+                    X
+                </button>
+            </div>
+            <p className="modal-text">
+            {newAppointmentData.firstName}{" "}{newAppointmentData.lastName}, you have successfully booked an appointment with Dr{" "}
+            {newAppointmentData.doctorName}{" "}at{" "}{newAppointmentData.time}{" "}on{" "}{newAppointmentData.date}.
             </p>
         </div>
+      </div>
+
     )
 }
 
