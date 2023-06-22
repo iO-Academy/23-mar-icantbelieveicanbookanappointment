@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import BASE_URL from "../../settings";
+import "./_recordsModal.scss";
 
 const RecordsModal = ({ patientId, patientName, closeRecordsModal }) => {
     const [patientRecord, setPatientRecord] = useState([]);
