@@ -1,6 +1,6 @@
 import './_appointments.scss'
 import AppointmentForm from "../../components/appointmentform";
-import TimeSlot from "../../components/timeslots";
+import TimeSlot from "../../components/TimeSlots";
 
 
 const Appointments = () => {

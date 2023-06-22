@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./_notesForm.scss";
-import TextInput from "../Inputs/textinput";
+import TextInput from "../Inputs/TextInput";
 import BASE_URL from "../../settings";
 
 const NotesForm = ({ appointmentId, patientName, closeNotesForm }) => {

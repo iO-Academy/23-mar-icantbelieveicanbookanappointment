@@ -1,7 +1,7 @@
 import BASE_URL from "../../settings"
 import React, { useEffect, useState } from "react"
 import './_appointmentSchedule.scss'
-import Modal from "../modal";
+import Modal from "../Modal";
 
 const AppointmentSchedule = ({ appointments, selectedDate }) => {
     const [patientNames, setPatientNames] = useState({})
