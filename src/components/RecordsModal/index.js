@@ -38,7 +38,6 @@ const RecordsModal = ({ patientId, patientName, closeRecordsModal }) => {
                         <ul>
                             {patientRecord.map((record) => (
                                 <li key={record.id}>
-                                    {/* Display record information here */}
                                     <p>Doctor: {record.doctor}</p>
                                     <p>Time: {record.time}</p>
                                     <p>Date: {record.date}</p>
