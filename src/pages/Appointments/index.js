@@ -1,5 +1,5 @@
 import './_appointments.scss'
-import AppointmentForm from "../../components/appointmentform";
+import AppointmentForm from "../../components/AppointmentForm";
 import TimeSlot from "../../components/TimeSlots";
 
 

@@ -22,7 +22,7 @@ const TimeSlot = ({
   const fetchAppointments = async () => {
     if (selectedDate && selectedDoctor) {
       try {
-        console.log("Fetching appointments...");
+        console.log("Fetching Appointments...");
         const response = await fetch('http://localhost:3001/appointments/' + selectedDate + '/' + selectedDoctor);
         if (!response.ok) {
           throw new Error("Failed to fetch Appointments");
@@ -39,13 +39,13 @@ const TimeSlot = ({
           }
         });
 
-        console.log("Fetched appointments:", fetchedAppointments);
-        console.log("Updated available appointments:", updatedAppTimes);
+        console.log("Fetched Appointments:", fetchedAppointments);
+        console.log("Updated available Appointments:", updatedAppTimes);
 
         setExistingAppointments(fetchedAppointments);
         setAvailableAppointments(updatedAppTimes);
 
-        // Reset available appointments if no fetched appointments
+        // Reset available Appointments if no fetched Appointments
         if (fetchedAppointments.length === 0) {
           setAvailableAppointments([9, 10, 11, 12, 13, 14, 15, 16]);
         }

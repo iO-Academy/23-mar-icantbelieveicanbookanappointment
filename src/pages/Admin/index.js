@@ -15,10 +15,10 @@ const Admin = ({ doctorId }) => {
             fetch(`${BASE_URL}appointments/${selectedDate}/${doctorId}`)
                 .then(response => {
                     if (response.ok) {
-                        console.log("fetched appointments")
+                        console.log("fetched Appointments")
                         return response.json();
                     } else {
-                        throw new Error("Failed to fetch appointments");
+                        throw new Error("Failed to fetch Appointments");
                     }
                 })
                 .then(data => {

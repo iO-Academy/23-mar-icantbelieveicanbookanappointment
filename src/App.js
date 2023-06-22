@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import './css/styles.css';
-import Header from "./components/header";
-import Homepage from "./pages/homepage";
-import Appointments from "./pages/appointments";
-import Login from "./pages/login";
+import Header from "./components/Header";
+import Homepage from "./pages/Homepage";
+import Appointments from "./pages/Appointments";
+import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import { useState } from "react";
 

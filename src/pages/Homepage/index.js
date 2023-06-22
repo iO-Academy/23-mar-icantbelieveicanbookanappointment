@@ -6,10 +6,10 @@ const Homepage = () => {
   <div className="homepage-content">
     <h2>Welcome to Lawrence Hill Surgery</h2>
     <div className="booking-link">
-      <Link to={"/appointments"}>Book an appointment</Link>
+      <Link to={"/Appointments"}>Book an appointment</Link>
     </div>
     <div className="login-link">
-      <Link to={"/login"}>Doctor Login</Link>
+      <Link to={"/Login"}>Doctor Login</Link>
     </div>
   </div>
   )
