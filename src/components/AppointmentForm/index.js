@@ -2,26 +2,38 @@ import TextInput from "../Inputs/TextInput"
 import DropdownInput from "../Inputs/DropdownInput"
 import DateInput from "../Inputs/InputDate"
 import './_appointmentForm.scss'
-import {useEffect, useState} from "react";
-import TimeSlots from "../Inputs/Timeslots";
-import Submit from "../Submit";
-import BASE_URL from "../../settings";
+import React, {useEffect, useState} from "react"
+import TimeSlots from "../Inputs/Timeslots"
+import Submit from "../Submit"
+import BASE_URL from "../../settings"
+import {useNavigate} from "react-router-dom"
+import Modal from "../Modal";
+import SuccessModal from "../SuccessModal";
 
-const AppointmentForm = () => {
+const AppointmentForm = message => {
 
   const [typedEmail, setTypedEmail] = useState("")
-  const [patientId, setPatientId] = useState(0);
+  const [patientId, setPatientId] = useState(0)
   const [docArray, setDocArray] = useState([])
   const [selectedDoctor, setSelectedDoctor] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
-  const [inputValue, setInputValue] = useState("");
-  const [inputReason, setInputReason] = useState("");
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
-  const [error, setError] = useState(null);
+  const [inputReason, setInputReason] = useState("")
+  const [inputFirstName, setInputFirstName] = useState("")
+  const [inputLastName, setInputLastName] = useState("")
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null)
+  const [appointmentToDb, setAppointmentToDb] = useState({})
+  const [newAppointmentData, setNewAppointmentData] = useState({})
+  const [error, setError] = useState(null)
+
+  const navigate = useNavigate()
+  const [modalOpen, setModalOpen] = useState(false)
+  // const [selectedAppointment, setSelectedAppointment] = useState(null)
+
+
 
   const setInputEmail = (email) => {
-    setTypedEmail(email);
-  };
+    setTypedEmail(email)
+  }
 
   const fetchPatient = async () => {
     try {
@@ -33,61 +45,106 @@ const AppointmentForm = () => {
         body: JSON.stringify({
           email: typedEmail
         }),
-      });
+      })
       if (!response.ok) {
-        throw new Error("Failed to fetch patient");
+        throw new Error("Failed to fetch patient")
       }
-      const data = await response.json();
-      let patientData = data.data;
-      setPatientId(patientData);
+      const data = await response.json()
+      let patientData = data.data
+      setPatientId(patientData)
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     }
-  };
+  }
+
 
   useEffect(() => {
     if (typedEmail) {
-      console.log(typedEmail)
-      fetchPatient();
+      fetchPatient()
     }
-  }, [typedEmail]);
+  }, [typedEmail])
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/doctors');
+        const response = await fetch('http://localhost:3001/doctors')
         if (!response.ok) {
-          throw new Error("Failed to fetch doctors");
+          throw new Error("Failed to fetch doctors")
         }
-        const data = await response.json();
+        const data = await response.json()
         const updatedDocArray = data.data.map(doctor => ({
           value: doctor.id.toString(),
           label: doctor.last_name
         }));
-        setDocArray(updatedDocArray);
+        setDocArray(updatedDocArray)
       } catch (error) {
-        setError(error.message);
+        setError(error.message)
       }
-    };
-    fetchData();
-  }, []);
+    }
+    fetchData()
+  }, [])
 
   useEffect(() => {
-    console.log(selectedDoctor);
-  }, [selectedDoctor]);
+  }, [selectedDoctor])
 
   useEffect(() => {
-    console.log(selectedDate);
-  }, [selectedDate]);
+  }, [selectedDate])
 
-  const handleAppointmentSubmit = () => {
-    const newAppointmentData = {
-      patient_id: patientId, // Value fetched from fetchPatient
-      doctor_id: selectedDoctor, // Value selected from DropdownInput
-      time: selectedTimeSlot, // Value selected from TimeSlots
-      date: selectedDate, // Value selected from DateInput
-      reason: inputReason // Value entered in the Reason TextInput
-    }; console.log(newAppointmentData)
+
+  const handleAppointmentSubmit = async (e) => {
+    e.preventDefault()
+    if (patientId < 1) {
+      alert('Email not recognised. Please try again.', error)
+    } else {
+      const newAppointmentData = {
+        firstName: inputFirstName,
+        lastName: inputLastName,
+        email: setInputEmail,
+        patientId: patientId,
+        doctorId: selectedDoctor,
+        time: selectedTimeSlot,
+        date: selectedDate,
+        reason: inputReason
+      }
+      const addAppointment = async () => {
+      }
+      try {
+        await addAppointment();
+        await fetch(BASE_URL + 'appointment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            patientId: newAppointmentData.patientId,
+            doctorId: newAppointmentData.doctorId,
+            time: selectedTimeSlot,
+            date: selectedDate,
+            reason: inputReason
+          }),
+        })
+          .then(response => {
+            if (response.ok) {
+              const data = response.json()
+              let appointmentData = data.data
+              setAppointmentToDb(appointmentData)
+              setNewAppointmentData(newAppointmentData)
+              console.log(newAppointmentData)
+              // navigate("/success")
+              setModalOpen(true)
+            }
+          })
+      } catch (error) {
+        setError("Failed to book appointment")
+      }
+    }
+  }
+
+  const handleModalClose = () => {
+    setModalOpen(false)
+    // setSelectedAppointment(null)
+    navigate('/')
   };
 
   return (
@@ -98,14 +155,14 @@ const AppointmentForm = () => {
           inputType={"text"}
           spellCheck={false}
           characterLimit={"255"}
-          setInputValue={setInputValue}
+          setInputValue={setInputFirstName}
         />
         <TextInput
           inputLabel={"Last name:"}
           inputType={"text"}
           spellCheck={false}
           characterLimit={"255"}
-          setInputValue={setInputValue}
+          setInputValue={setInputLastName}
         />
         <TextInput
           inputLabel={"Email:"}
@@ -127,7 +184,9 @@ const AppointmentForm = () => {
           defaultInput={"Please select..."}
           setDropdownValue={setSelectedDoctor}
         />
-        <DateInput inputLabel={"Date:"} setSelectedDate={setSelectedDate} />
+        <DateInput
+          inputLabel={"Date:"}
+          setSelectedDate={setSelectedDate} />
       </div>
       <h3>Select from available appointments:</h3>
       <TimeSlots
@@ -138,8 +197,14 @@ const AppointmentForm = () => {
         error={error}
         setError={setError}
       />
-
       <Submit handleSubmit={handleAppointmentSubmit} />
+      {modalOpen && (
+        <SuccessModal
+          newAppointmentData={newAppointmentData}
+          onClose={() => setNewAppointmentData(null)}
+        />
+      )}
+
     </>
   )
 }
