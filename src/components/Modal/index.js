@@ -4,6 +4,7 @@ import RecordsModal from "../RecordsModal";
 import NotesForm from "../NotesForm";
 
 const Modal = ({ data, patientName, selectedDate, closeModal }) => {
+
     const { time, reason } = data;
     const [showRecordsModal, setShowRecordsModal] = useState(false);
     const [showNotesForm, setShowNotesForm] = useState(false);

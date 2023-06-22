@@ -1,11 +1,18 @@
 .submit-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
+  //background-color: #007bff;
+  //color: #fff;
+  //padding: 0.5rem 1rem;
+  //border: none;
+  //border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
+  width: 25%;
+  font-size: 1.2rem;
+  border: 0.05rem solid #1a4486;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  color: #FFFFFF;
+  background: radial-gradient(ellipse 100% 100% at 0% 100%, #194893 50%, #4272c4 100%);
 }
 
 .submit-button:hover {

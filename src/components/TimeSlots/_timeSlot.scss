@@ -1,15 +1,31 @@
 .timeSlot-container {
   width: 60%;
   display: flex;
-
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
 
   .timeSlot {
-    width: 10%;
+    width: 15%;
     border: 0.1rem solid #1a4486;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-right: 0.9rem;
     text-align: center;
     color: #FFFFFF;
     background: radial-gradient(ellipse 100% 100% at 0% 100%, #194893 50%, #4272c4 100%);
+  }
+
+  .timeSlot:hover {
+    cursor: pointer;
+  }
+
+  .timeSlot.selected {
+    background: radial-gradient(ellipse 100% 100% at 0% 100%, #501993 50%, #a442c4 100%);
+    border: 0.1rem solid #501993FF;
+    font-weight: bold;
   }
 }
