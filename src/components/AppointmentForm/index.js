@@ -72,7 +72,7 @@ const AppointmentForm = () => {
                 const data = await response.json()
                 const updatedDocArray = data.data.map(doctor => ({
                     value: doctor.id.toString(),
-                    label: doctor.last_name
+                    label: "Dr " + doctor.last_name
                 }));
                 setDocArray(updatedDocArray)
             } catch (error) {
@@ -83,10 +83,11 @@ const AppointmentForm = () => {
     }, [])
 
     useEffect(() => {
-        console.log(selectedDoctor)
+        // setSelectedTimeSlot(null)
     }, [selectedDoctor])
 
     useEffect(() => {
+        // setSelectedTimeSlot(null)
     }, [selectedDate])
 
 
@@ -96,6 +97,8 @@ const AppointmentForm = () => {
             alert('Email not recognised. Please try again.', error);
         } else if (!inputFirstName || !inputLastName) {
             alert('Please enter a first name and last name.');
+        } else if (!selectedTimeSlot) {
+            alert('Please select an appointment time.');
         } else {
             const selectedDoctorObj = docArray.find(
               (doctor) => doctor.value === selectedDoctor
@@ -104,7 +107,8 @@ const AppointmentForm = () => {
                 firstName: inputFirstName,
                 lastName: inputLastName,
                 email: setInputEmail,
-                doctorName: selectedDoctorObj ? selectedDoctorObj.label : "",                patientId: patientId,
+                doctorName: selectedDoctorObj ? selectedDoctorObj.label : "",
+                patientId: patientId,
                 doctorId: selectedDoctor,
                 time: selectedTimeSlot,
                 date: selectedDate,

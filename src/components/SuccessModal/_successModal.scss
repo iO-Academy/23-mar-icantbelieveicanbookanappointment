@@ -9,6 +9,7 @@
   justify-content: center; /* Center horizontally and vertically */
 
   .modal-content {
+    width: 70%;
     border-radius: 8px;
     padding: 20px;
     background-color: #FFFFFF;
@@ -25,7 +26,7 @@
       cursor: pointer;
       font-weight: bold;
       font-size: 0.5rem;
-      width: 1.2rem;
+      width: 1.3rem;
       border: 0.15rem solid #1a4486;
       border-radius: 0.2rem;
       padding: 0.2rem;
@@ -41,5 +42,6 @@
 
   .modal-text {
     margin-bottom: 2rem;
+    padding: 1.5rem;
   }
 }
