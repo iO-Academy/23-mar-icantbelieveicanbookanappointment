@@ -15,8 +15,6 @@ const NotesForm = ({ appointmentId, patientName, closeNotesForm }) => {
             prescriptions: prescriptions
         };
 
-        // POST REQUEST TO ADD THE NOTES TO DATABASE
-        // IN THE BODY INCLUDES THE 'notes' AND 'prescriptions'
 
         fetch(BASE_URL + 'record', {
             method: 'POST',
@@ -30,15 +28,11 @@ const NotesForm = ({ appointmentId, patientName, closeNotesForm }) => {
             }),
         })
             .then(response => {
-                // Handle the response
-                console.log(response)
                 if (response.ok) {
-                    console.log("record submitted")
                     closeNotesForm()
                 }
             })
             .catch(error => {
-                // Handle the error
                 alert('Did not submit', error)
             });
     };

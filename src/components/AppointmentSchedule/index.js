@@ -70,7 +70,6 @@ const AppointmentSchedule = ({ appointments, selectedDate }) => {
                     closeModal={closeModal}
                     patientName={patientNames[selectedAppointment.patientId]}
                     selectedDate={selectedDate}
-                    appointments={appointments}
                 />
             )}
         </div>

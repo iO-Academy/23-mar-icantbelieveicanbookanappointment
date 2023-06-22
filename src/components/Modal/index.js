@@ -3,7 +3,8 @@ import "./_modal.scss";
 import RecordsModal from "../RecordsModal";
 import NotesForm from "../NotesForm";
 
-const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) => {
+const Modal = ({ data, patientName, selectedDate, closeModal }) => {
+
     const { time, reason } = data;
     const [showRecordsModal, setShowRecordsModal] = useState(false);
     const [showNotesForm, setShowNotesForm] = useState(false);
@@ -55,7 +56,7 @@ const Modal = ({ appointments, data, patientName, selectedDate, closeModal }) =>
                     <div className="modal-content records-modal">
                         <RecordsModal
                             patientName={patientName}
-                            patientId ={patientId}
+                            patientId={patientId}
                             closeRecordsModal={closeRecordsModal}
                         />
                     </div>

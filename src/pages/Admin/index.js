@@ -1,8 +1,8 @@
 import DateInput from "../../components/Inputs/DateInput";
 import AppointmentSchedule from "../../components/AppointmentSchedule";
 import './_admin.scss'
-import { useEffect, useState } from "react";
-import BASE_URL from "../../settings";
+import { useEffect, useState } from "react"
+import BASE_URL from "../../settings"
 
 const Admin = ({ doctorId }) => {
     const [selectedDate, setSelectedDate] = useState("");
@@ -15,14 +15,12 @@ const Admin = ({ doctorId }) => {
             fetch(`${BASE_URL}appointments/${selectedDate}/${doctorId}`)
                 .then(response => {
                     if (response.ok) {
-                        console.log("fetched Appointments")
                         return response.json();
                     } else {
                         throw new Error("Failed to fetch Appointments");
                     }
                 })
                 .then(data => {
-                    console.log(data)
                     setAppointments(data.data);
                 })
                 .catch(error => {
