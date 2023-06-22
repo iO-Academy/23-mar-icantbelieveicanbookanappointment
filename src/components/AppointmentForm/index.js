@@ -1,9 +1,9 @@
-import TextInput from "../Inputs/textinput"
-import DropdownInput from "../Inputs/dropdowninput"
+import TextInput from "../Inputs/TextInput"
+import DropdownInput from "../Inputs/DropdownInput"
 import DateInput from "../Inputs/DateInput"
 import './_appointmentForm.scss'
 import {useEffect, useState} from "react";
-import TimeSlots from "../timeslots";
+import TimeSlots from "../TimeSlots";
 
 const AppointmentForm = () => {
 

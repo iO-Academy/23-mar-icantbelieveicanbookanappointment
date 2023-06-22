@@ -6,7 +6,6 @@ const RecordsModal = ({ patientId, patientName, closeRecordsModal }) => {
     const [patientRecord, setPatientRecord] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // USE EFFECT TO PERFORM A GET REQUEST TO GET THE RECORDS
     useEffect(() => {
         const fetchPatientRecord = async () => {
             fetch(`${BASE_URL}record/${patientId}`)

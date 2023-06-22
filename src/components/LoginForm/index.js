@@ -1,9 +1,8 @@
-import TextInput from "../Inputs/textinput";
+import TextInput from "../Inputs/TextInput";
 import './_loginForm.scss';
 import Submit from "../Submit";
 import {useNavigate} from "react-router-dom"
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import BASE_URL from "../../settings";
 
 const LoginForm = ({ setLoggedIn, setDoctorId }) => {
@@ -29,19 +28,14 @@ const LoginForm = ({ setLoggedIn, setDoctorId }) => {
             }),
         })
             .then((response) => {
-                // Handle the response
-                console.log(response)
                 if (response.ok) {
                     setLoggedIn(true)
-                    // alert('logged in')
                     navigate('/admin')
                     return response.json()
                 }
             }).catch(error => {
-                // Handle the error
                 alert('Wrong credentials', error)
             }).then(data => {
-                console.log(data.doctorId)
                 setDoctorId(data.doctorId)
         })
     };
