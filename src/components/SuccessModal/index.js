@@ -16,7 +16,7 @@ const SuccessModal = ({ newAppointmentData, onClose }) => {
                 </button>
             </div>
             <p className="modal-text">
-            {newAppointmentData.firstName}{" "}{newAppointmentData.lastName}, you have successfully booked an appointment with Dr{" "}
+            {newAppointmentData.firstName}{" "}{newAppointmentData.lastName}, you have successfully booked an appointment with{" "}
             {newAppointmentData.doctorName}{" "}at{" "}{newAppointmentData.time}{" "}on{" "}{newAppointmentData.date}.
             </p>
         </div>
